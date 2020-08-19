@@ -1,0 +1,42 @@
+{
+  "name": "node_starter",
+  "version": "1.0.0",
+  "description": "complete node js guide",
+  "main": " ",
+  "scripts": {
+    "test": "git repositery",
+    "start": "nodemon app.js",
+    "start-server": "nodemon app.js"
+  },
+  "keywords": [
+    "author:fahad"
+  ],
+  "author": "fahad",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.4.0",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.5",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.28",
+    "mysql2": "^2.1.0",
+    "nodemailer": "^6.4.11",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "pug": "^3.0.0",
+    "sequelize": "^6.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "starter"
+  }
+}
