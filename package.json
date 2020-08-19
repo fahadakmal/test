@@ -5,7 +5,7 @@
   "main": " ",
   "scripts": {
     "test": "git repositery",
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "start-server": "nodemon app.js"
   },
   "keywords": [

@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 
 const session = require("express-session");
 var MongoDBStore = require("connect-mongodb-session")(session);
-const csrf=require('csurf'); 
-const flash=require('connect-flash');
+const csrf = require("csurf");
+const flash = require("connect-flash");
 var store = new MongoDBStore({
   uri:
     "mongodb+srv://fahad:fahad7700546@cluster0-efc3t.mongodb.net/shop?retryWrites=true&w=majority",
@@ -16,7 +16,7 @@ const productControllers = require("./controllers/error");
 const User = require("./models/user");
 // app.engine('handlebars',expressHbs());
 // app.set('view engine','hbs');
-const csrfProtection=csrf();
+const csrfProtection = csrf();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
@@ -41,9 +41,8 @@ app.use(
 app.use(csrfProtection);
 app.use(flash());
 app.use((req, res, next) => {
-  if(!req.session.user)
-  {
-return next();
+  if (!req.session.user) {
+    return next();
   }
   User.findById(req.session.user._id)
     .then((user) => {
@@ -52,17 +51,19 @@ return next();
     })
     .catch((err) => console.log(err));
 });
-app.use((req,res,next)=>{
-  res.locals.isAuthenticated=req.session.isloggedIn;
-  res.locals.csrfToken=req.csrfToken()
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isloggedIn;
+  res.locals.csrfToken = req.csrfToken();
 
-next();
+  next();
 });
 app.use("/admin", adminRoutes.routes);
 app.use(shopRoutes);
 app.use(authRoutes);
 
 app.use(productControllers.get404);
+
+const PORT = process.env.PORT || 3000;
 mongoose
   .connect(
     "mongodb+srv://fahad:fahad7700546@cluster0-efc3t.mongodb.net/shop?retryWrites=true&w=majority",
@@ -70,7 +71,8 @@ mongoose
   )
   .then((result) => {
     console.log("connected");
-    app.listen(3000);
+    app
+      .listen(PORT, () => console.log(`server is running on port ${PORT}`))
   })
   .catch((err) => {
     console.log(err);
